@@ -26,26 +26,24 @@
     <!-- /Encabezado -->
 
     <table>
-        <thead>
+            <tbody>
+            {% for alumna in alumnas %}
             <tr class="text-center">
-                <th>Foto</th>
-                <th class="text-semibold">Matrícula</th>
-                <th class="muted">Nombre</th>
-                <th class="muted">Carrera</th>
-                <th class="muted">Turno</th>
+            <td>
+{% if alumna.imagen %}
+    <img src="{{ alumna.imagen.url }}" alt="Foto" class="img-media" />
+{% else %}
+    <img src="{% static 'inicio/images/default.png' %}" alt="Foto" class="img-media" />
+{% endif %}
+
+            </td>
+            <td class="text-semibold">{{ alumna.matricula }}</td>
+            <td class="muted">{{ alumna.nombre }}</td>
+            <td class="muted">{{ alumna.carrera }}</td>
+            <td class="muted">{{ alumna.turno }}</td>
             </tr>
-        </thead>
-        <tbody>
-            <tr class="text-center">
-                <td>
-                    <img src="" alt="" class="img-media" />
-                </td>
-                <td>Utm221102ti</td>
-                <td>Juan Pérez</td>
-                <td>TIC</td>
-                <td>Matutino</td>
-            </tr>
-        </tbody>
+            {% endfor %}
+            </tbody>
     </table>
 
     <!-- /Contenido Principal -->
