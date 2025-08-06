@@ -1,0 +1,66 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %} Comentarios {% endblock %}
+
+{% block imagen %} 
+    {% load static %}
+    {% static 'inicio/images/comentarios.png' %}
+{% endblock %}
+
+{% block texto %} Comentarios {% endblock %}
+
+{% block span %} DSM {% endblock %}
+
+{% block contenido %}
+
+<!--Encabezdo -->
+<div class="page-header">
+	<div class="page-title">
+		<h3>Comentarios
+			<small>Lista de comentarios</small>
+		</h3>
+	</div>
+</div>
+<!-- /Encabezado-->
+
+<!-- Navegación -->
+{% block nav %}
+<div class="breadcrumb-line">
+	<ul class="breadcrumb">
+		<a href="{%url 'Principal'%}">
+			{%if request.path == ' / ' %}
+			Principal
+			{%else%}
+			Principal {{request.path}}
+			{% endif %}
+		</a>
+	</ul>
+</div>
+{% endblock %}
+<!-- /Navegación -->
+
+<!-- Tabla de alumnos -->
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Usuario</th>
+			<th>Mensaje</th>
+			<th>Editar</th>
+			<th>Eliminar</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<!-- {% for comentario in comentarios %}-->
+		<tr>
+			<td class="text-semibold">Usuario</td>
+			<td class="muted">Mensaje</td>
+			<td class="muted"></td>
+			<td class="muted"></td>
+		<tr>
+		<!--{% endfor %}-->
+	</tbody>
+</table>
+
+
+{% endblock %}

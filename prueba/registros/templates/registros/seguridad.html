@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% comment %} Formulario para mostra lo que se escriba en el input "nombre" {% endcomment %}
+    <form method="GET">
+    nombre:    
+        <Input type="text" name="nombre"></Input>
+        <Input type="submit" name="Buscar"></Input>
+    </form>
+    {% comment %} Mostrar Resultado mediante la id {% endcomment %}
+    <h2> Resultado: {{nombre | safe}}</h2>
+    <img src="https://media.giphy.com/media/26tk0jALFpsXmAF8c/giphy.gif"/&gt;>
+
+    <!-- script --> 
+     //TODO:
+    <script type="application/javascript">
+    var busqueda = new URLSearchParams(document.location.search);
+    if (busqueda.has("nombre")){
+    document.getElementById("resultado").innerHTML = "Resultado: "
+    + busqueda.get("nombre")
+    }
+    </script>
+
+</body>
+</html>

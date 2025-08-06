@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.CreateModel(
             name='Alumnas',
+            name='Alumnos',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('matricula', models.CharField(max_length=12)),
@@ -21,6 +22,7 @@ class Migration(migrations.Migration):
                 ('turno', models.CharField(max_length=10)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('update', models.DateTimeField(auto_now_add=True)),
+                ('updated', models.DateTimeField(auto_now_add=True)),
             ],
         ),
     ]

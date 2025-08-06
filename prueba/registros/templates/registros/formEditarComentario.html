@@ -1,0 +1,32 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %}CONTACTANOS{% endblock %}
+
+{% block encabezado %}
+<!-- Encabezado -->
+<div class="page-header">
+  <div class="page-title">
+    <h3>Contáctanos <small>Modificando comentario</small></h3>
+  </div>
+</div>
+<!-- /Encabezado -->
+{% endblock %}
+
+{% block contenido %}
+<form class="form-horizontal" action="{% url 'Editar' comentario.id %}" method="POST" role="form">
+  {% csrf_token %}
+
+  <div class="form-group">
+    <label for="usuario">Usuario</label>
+    <input value="{{ comentario.usuario }}" name="usuario" type="text" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="mensaje">Mensaje</label>
+    <textarea name="mensaje" cols="50" rows="10" class="form-control">{{ comentario.mensaje }}</textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Guardar cambios</button>
+  <a href="{% url 'Comentarios' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

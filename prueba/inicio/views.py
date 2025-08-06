@@ -18,3 +18,5 @@ def registros (request):
     #Recuperamos todos los objetos de la tabla alumnas
     alumnas=Alumnas.objects.all()
     return render(request, "registros/principal.html", {'alumnas':alumnas})
+def comentarios (request):
+    return render(request, "inicio/comentarios.html")

@@ -1,0 +1,104 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %} Principal {% endblock %}
+
+{% block imagen %} 
+    {% load static %}
+    {% static 'inicio/images/home.png' %}
+{% endblock %}
+
+{% block texto %} Principal {% endblock %}
+
+{% block span %} DSM {% endblock %}
+
+{% block contenido %}
+
+<!-- Encabezado -->
+<div class="page-header">
+    <div class="page-title">
+        <h3>
+            {% if alumnos %}
+                Alumnos
+                <small>Lista de alumnos</small>
+            {% elif comentarios %}
+                Comentarios
+                <small>Lista de comentarios</small>
+            {% else %}
+                Datos
+            {% endif %}
+        </h3>
+    </div>
+</div>
+<!-- /Encabezado -->
+
+<!-- Navegación -->
+{% block nav %}
+<div class="breadcrumb-line">
+    <ul class="breadcrumb">
+        <a href="{% url 'Principal' %}">
+            {% if request.path == ' / ' %}
+                Principal
+            {% else %}
+                Principal {{ request.path }}
+            {% endif %}
+        </a>
+    </ul>
+</div>
+{% endblock %}
+<!-- /Navegación -->
+
+<!-- Tabla para Alumnos -->
+{% if alumnos %}
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Foto</th>
+            <th>Matrícula</th>
+            <th>Nombre</th>
+            <th>Carrera</th>
+            <th>Turno</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for alumno in alumnos %}
+        <tr>
+            <td class="text-center">
+                {% if alumno.imagen %}
+                    <img src="{{ alumno.imagen.url }}" alt="" class="img-media" height="60px" width="60px">
+                {% else %}
+                    Sin imagen
+                {% endif %}
+            </td>
+            <td class="text-semibold">{{ alumno.matricula }}</td>
+            <td class="muted">{{ alumno.nombre }}</td>
+            <td class="muted">{{ alumno.carrera }}</td>
+            <td class="muted">{{ alumno.turno }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<!-- Tabla para Comentarios -->
+{% if comentarios %}
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Alumno</th>
+            <th>Comentario</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for comentario in comentarios %}
+        <tr>
+            <td>{{ comentario.alumno.nombre }}</td>
+            <td>{{ comentario.coment|safe }}</td>
+            <td>{{ comentario.created }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

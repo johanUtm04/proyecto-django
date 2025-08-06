@@ -50,3 +50,46 @@
 
     <!-- /Contenido Principal -->
 {% endblock %}
+<!-- Navegación -->
+{% block nav %}
+<div class="breadcrumb-line">
+	<ul class="breadcrumb">
+		<a href="{%url 'Principal'%}">
+			{%if request.path == ' / ' %}
+			Principal
+			{%else%}
+			Principal {{request.path}}
+			{% endif %}
+		</a>
+	</ul>
+</div>
+{% endblock %}
+<!-- /Navegación -->
+
+<!-- Tabla de alumnos -->
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Foto</th>
+			<th>Matrícula</th>
+			<th>Nombre</th>
+			<th>Carrera</th>
+			<th>Turno</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td class="text-center">
+				<img src="" alt="" class"img-media">
+			</td>
+			<td class="text-semibold">UTM221032TI</td>
+			<td class="muted">Vanessa</td>
+			<td class="muted">TIC</td>
+			<td class="muted">Matituno</td>
+		<tr>
+	</tbody>
+</table>
+
+
+{% endblock %}

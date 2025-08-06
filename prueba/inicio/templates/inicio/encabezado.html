@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
 <title>{%block titulo%}  {%endblock%}</title>
-    
+
 {%load static%}
 <link href="{% static 'inicio/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css">
 <link href="{% static 'inicio/css/londinium-theme.css'%}" rel="stylesheet" type="text/css">
@@ -72,9 +72,12 @@
 			<div class="sidebar-content">
 				<!-- Menú de navegación -->
 				<ul class="navigation">
+
 							<li><a href="{%url 'Principal' %}">w2m</a></li>
 							<li><a href="{%url 'Formulario' %}">Registro</a></li>	
 							<li><a href="{%url 'Contacto' %}">Contacto</a></li>
+
+
 				</ul>
 				<!-- /Fin menú -->
 			</div>
