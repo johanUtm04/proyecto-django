@@ -1,10 +1,9 @@
 {% extends "inicio/encabezado.html" %}
 
-{% load static %}
-
 {% block titulo %} Principal {% endblock %}
 
 {% block imagen %}
+    {% load static %}
     {% static 'inicio/images/home.png' %}
 {% endblock %}
 
@@ -13,43 +12,17 @@
 {% block span %} DSM {% endblock %}
 
 {% block contenido %}
-    <!-- Contenido Principal -->
 
-    <!-- Encabezado -->
-    <div class="page-header">
-        <div class="page-title">
-            <h3>Alumnas
-                <small>Lista de Alumnas</small>
-            </h3>
-        </div>
-    </div>
-    <!-- /Encabezado -->
+<!--Encabezdo -->
+<div class="page-header">
+	<div class="page-title">
+		<h3>Alumnos
+			<small>Lista de alumnos</small>
+		</h3>
+	</div>
+</div>
+<!-- /Encabezado-->
 
-    <table>
-        <thead>
-            <tr class="text-center">
-                <th>Foto</th>
-                <th class="text-semibold">Matrícula</th>
-                <th class="muted">Nombre</th>
-                <th class="muted">Carrera</th>
-                <th class="muted">Turno</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="text-center">
-                <td>
-                    <img src="" alt="" class="img-media" />
-                </td>
-                <td>Utm221102ti</td>
-                <td>Juan Pérez</td>
-                <td>TIC</td>
-                <td>Matutino</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- /Contenido Principal -->
-{% endblock %}
 <!-- Navegación -->
 {% block nav %}
 <div class="breadcrumb-line">

@@ -6,14 +6,14 @@ from .models import ComentarioContacto, Archivos
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib import messages
-from django.db.models import Q
 
 
 
-""" def registros (request):
+
+def registros (request):
     alumnos=Alumnos.objects.all() #all recupera todos los objetos del modelo(registros de la tabla alumnos)
     return render(request, "registros/principal.html",{'alumnos':alumnos})
-    #Indicamos el lugar donde se renderiza el resultado de esta vista y enviamos la lista de alumnos recuperados """
+    #Indicamos el lugar donde se renderiza el resultado de esta vista y enviamos la lista de alumnos recuperados
 
 
 def registrar(request):
@@ -188,20 +188,3 @@ def consultasSQL(request):
     alumnos=Alumnos.objects.raw( 'SELECT id,  matricula, nombre, carrera, turno, imagen FROM registros_alumnos WHERE carrera ="TI" ORDER BY turno DESC')
     return render (request, "registros/consultas.html",
     {'alumnos': alumnos})
-
-""" //TODO: """
-def seguridad(request, nombre=None):
-    nombre = request.GET.get('nombre')
-    return render (request, "registros/seguridad.html",
-    {'nombre': nombre})
-
-
-def registros(request):
-    query = request.GET.get('q') 
-    if query:   
-        alumnos = Alumnos.objects.filter(
-            Q(nombre__icontains=query) | Q(matricula__icontains=query)
-        )
-    else:
-        alumnos = Alumnos.objects.all()  
-    return render(request, "registros/principal.html", {'alumnos': alumnos, 'query': query})  

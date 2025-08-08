@@ -1,11 +1,6 @@
 {% extends "inicio/encabezado.html" %}
 
-{% load static %}
-
 {% block titulo %} Principal {% endblock %}
-
-
-
 
 {% block imagen %} 
     {% load static %}
@@ -17,38 +12,59 @@
 {% block span %} DSM {% endblock %}
 
 {% block contenido %}
-    <!-- Contenido Principal -->
 
-    <!-- Encabezado -->
-    <div class="page-header">
-        <div class="page-title">
-            <h3>Alumnas
-                <small>Lista de Alumnas</small>
-            </h3>
-        </div>
-    </div>
-    <!-- /Encabezado -->
+<!--Encabezdo -->
+<div class="page-header">
+	<div class="page-title">
+		<h3>Alumnos
+			<small>Lista de alumnos</small>
+		</h3>
+	</div>
+</div>
+<!-- /Encabezado-->
 
-    <table>
-            <tbody>
-            {% for alumna in alumnas %}
-            <tr class="text-center">
-            <td>
-{% if alumna.imagen %}
-    <img src="{{ alumna.imagen.url }}" alt="Foto" class="img-media" />
-{% else %}
-    <img src="{% static 'inicio/images/default.png' %}" alt="Foto" class="img-media" />
-{% endif %}
+<!-- Navegación -->
+{% block nav %}
+<div class="breadcrumb-line">
+	<ul class="breadcrumb">
+		<a href="{%url 'Principal'%}">
+			{%if request.path == ' / ' %}
+			Principal
+			{%else%}
+			Principal {{request.path}}
+			{% endif %}
+		</a>
+	</ul>
+</div>
+{% endblock %}
+<!-- /Navegación -->
 
-            </td>
-            <td class="text-semibold">{{ alumna.matricula }}</td>
-            <td class="muted">{{ alumna.nombre }}</td>
-            <td class="muted">{{ alumna.carrera }}</td>
-            <td class="muted">{{ alumna.turno }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-    </table>
+<!-- Tabla de alumnos -->
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Foto</th>
+			<th>Matrícula</th>
+			<th>Nombre</th>
+			<th>Carrera</th>
+			<th>Turno</th>
+		</tr>
+	</thead>
 
-    <!-- /Contenido Principal -->
+	<tbody>
+		{% for alumno in alumnos %}
+		<tr>
+			<td class="text-center">
+				<img src="{{alumno.imagen.url}}" alt="" class"img-media" height="60px" width="60px">
+			</td>
+			<td class="text-semibold">{{alumno.matricula}}</td>
+			<td class="muted">{{alumno.nombre}}</td>
+			<td class="muted">{{alumno.carrera}}</td>
+			<td class="muted">{{alumno.turno}}</td>
+		<tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+
 {% endblock %}

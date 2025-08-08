@@ -1,8 +1,3 @@
-from django.contrib import admin
-from django.urls import path
-from inicio import views as inicio_views
-from registros import views as registros_views
-
 """
 URL configuration for prueba project.
 
@@ -23,27 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from inicio import views
 from registros import views as views_registros
-
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-
-    # URLs de la app 'inicio'
-    path('contacto/', inicio_views.contacto, name="Contacto"),
-    path('formulario/', inicio_views.formulario, name="Formulario"),
-    path('ejemplo/', inicio_views.ejemplo, name="Ejemplo"),
-
-    # URL principal que apunta a registros
-    path('', registros_views.registros, name="Principal"),
-]
-
-if settings.DEBUG:
-    from django.conf.urls.static import static
-    urlpatterns += static(settings.MEDIA_URL, 
-            document_root=settings.MEDIA_ROOT)
-
     path('',views_registros.registros, name="Principal"),
     path('contacto/',views_registros.contacto, name="Contacto"),
     path('formulario/', views.formulario, name="Formulario"),
@@ -73,9 +51,8 @@ if settings.DEBUG:
 
 
     path('consultasSQL/',views_registros.consultasSQL, name="sql"),
-    path('seguridad/',views_registros.seguridad, name="Seguridad"),
 
-
+]
 
 
 
@@ -83,4 +60,3 @@ if settings.DEBUG:
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, 
             document_root=settings.MEDIA_ROOT)
-
